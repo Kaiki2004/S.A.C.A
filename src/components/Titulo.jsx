@@ -10,7 +10,7 @@ export default function Titulo() {
 
 const Topo = styled.h1`
     font-family: 'Righteous';
-    font-size: 36px;
+    font-size: 48px;
     color: #FFFFFF;
     weight: 400;
     width: 500px;
@@ -18,10 +18,9 @@ const Topo = styled.h1`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 60px;
-    margin-top: 30px;
+    margin-top: 15px;
 `
 const Imagem = styled.img`
-    width: 82px;
-    height: 99px;
+    width: 52px;
+    height: 69px;
 `
