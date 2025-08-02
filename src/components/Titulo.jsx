@@ -3,7 +3,7 @@ import raio from '../assets/logo.png'
 export default function Titulo() {
     return (
         <>
-            <div><span><img src={raio} alt="logo" /></span><Topo>Zap Recall</Topo></div>
+            <Topo><Imagem src={raio} alt="logo" />Zap Recall</Topo>
         </>
     )
 }
@@ -13,6 +13,15 @@ const Topo = styled.h1`
     font-size: 36px;
     color: #FFFFFF;
     weight: 400;
-    size:36px
+    width: 500px;
+    height: 91px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    margin-top: 30px;
 `
-
+const Imagem = styled.img`
+    width: 82px;
+    height: 99px;
+`

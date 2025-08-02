@@ -7,5 +7,7 @@
 body{
     background-color: #FB6B6B;
     font-family: 'Righteous', sans-serif;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center
 }
