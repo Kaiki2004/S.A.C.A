@@ -18,9 +18,9 @@ export default function PerguntaCard({
 }) {
     const imagem =
         status === "nao" ? errou :
-        status === "quase" ? quase :
-        status === "zap" ? acertou :
-        play;
+            status === "quase" ? quase :
+                status === "zap" ? acertou :
+                    play;
 
     return (
         <Container>
