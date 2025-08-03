@@ -2,11 +2,17 @@ import styled from 'styled-components';
 import raio from '../assets/logo.png'
 export default function Titulo() {
     return (
-        <>
+        <Container>
             <Topo><Imagem src={raio} alt="logo" />Zap Recall</Topo>
-        </>
+        </Container>
     )
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 const Topo = styled.h1`
     font-family: 'Righteous';
