@@ -19,7 +19,7 @@ export const Q = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
     border-radius: 5px;
     padding: 0 20px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
@@ -29,10 +29,10 @@ export const Q = styled.div`
         font-weight: 700;
         text-decoration: ${({ status }) => (status ? 'line-through' : 'none')};
         color: ${({ status }) =>
-            status === 'nao' ? '#FF3030' :
+        status === 'nao' ? '#FF3030' :
             status === 'quase' ? '#FF922E' :
-            status === 'zap' ? '#2FBE34' :
-            'black'};
+                status === 'zap' ? '#2FBE34' :
+                    'black'};
     }
 
     img {
@@ -44,6 +44,34 @@ export const Q = styled.div`
         }
     }
 `;
+
+//Botao adicionar 
+export const Add = styled.button`
+    font-family: 'Recursive', sans-serif;
+    font-size: 16px; 
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 90%;
+    max-width: 500px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 0 20px;
+    cursor: pointer;
+
+    img {
+        height: 24px;
+        cursor: pointer;
+        align-items: center;
+        margin-left: 5px;
+
+        @media (min-width: 600px) {
+            height: 30px;
+        }
+    }
+`
 
 // CARD ABERTO
 export const CardPergunta = styled.div`
@@ -143,4 +171,18 @@ export const Num_questoes = styled.div`
     @media (min-width: 600px) {
         font-size: 24px;
     }
+`;
+
+
+export const PerguntaConteiner = styled.span`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    img{
+        height: 20px;
+        cursor: pointer;
+        
+    }
+    
 `;

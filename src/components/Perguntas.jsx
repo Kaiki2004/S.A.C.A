@@ -3,8 +3,11 @@ import virar from "../assets/seta_virar.png";
 import errou from "../assets/icone_erro.png";
 import acertou from "../assets/icone_certo.png";
 import quase from "../assets/icone_quase.png";
-import { Container, Q, CardPergunta } from "../style/style.js";
+import { Container, Q, CardPergunta,PerguntaConteiner } from "../style/style.js";
+import Adicionar from "./Adicionar.jsx";
 import BotoesResposta from "./BotoesResposta";
+import Lampada from "../assets/Lampada.png"
+import Tirarduvida from "./Tirarduvidas.jsx"
 
 export default function PerguntaCard({
     item,
@@ -46,16 +49,20 @@ export default function PerguntaCard({
                         </>
                     ) : (
                         <>
-                            <p>{item.resposta}</p>
+                            <PerguntaConteiner>
+                                <p>{item.resposta}</p><img onClick={Tirarduvida} src={Lampada} alt="" />
+                            </PerguntaConteiner>
                             <BotoesResposta
                                 onNaoLembrou={() => onResponder(index, "nao")}
                                 onQuaseLembrou={() => onResponder(index, "quase")}
                                 onZap={() => onResponder(index, "zap")}
                             />
+                            
                         </>
                     )}
                 </CardPergunta>
             )}
+
         </Container>
     );
 }

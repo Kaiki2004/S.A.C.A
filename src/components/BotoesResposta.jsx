@@ -8,9 +8,9 @@ import {
 export default function BotoesResposta({ onNaoLembrou, onQuaseLembrou, onZap }) {
     return (
         <ButtonContainer>
-            <ButtonNaoLembrei onClick={onNaoLembrou}>Não lembrei</ButtonNaoLembrei>
-            <QuaseNaoLembrei onClick={onQuaseLembrou}>Quase não lembrei</QuaseNaoLembrei>
-            <Zap onClick={onZap}>Zap!</Zap>
+            <ButtonNaoLembrei onClick={onNaoLembrou}>Errei</ButtonNaoLembrei>
+            <QuaseNaoLembrei onClick={onQuaseLembrou}>Quase </QuaseNaoLembrei>
+            <Zap onClick={onZap}>Acertei</Zap>
         </ButtonContainer>
     );
 }

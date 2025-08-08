@@ -3,7 +3,7 @@ import raio from '../assets/logo.png'
 export default function Titulo() {
     return (
         <Container>
-            <Topo><Imagem src={raio} alt="logo" />Zap Recall</Topo>
+            <Topo><Imagem src={raio} alt="logo" />S.A.C.A</Topo> {/*Sistema de Aprendizado com Cards Ativos*/}
         </Container>
     )
 }

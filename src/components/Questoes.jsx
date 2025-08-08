@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Perguntas } from "./Dados";
+import { Perguntas as PerguntasBase } from "./Dados";
 import PerguntaCard from "./Perguntas.jsx";
 import ContadorConcluidos from "./Rodape.jsx";
+import BotaoAdicionar  from "./Adicionar.jsx";
 
 export default function Questoes() {
+    const [perguntas, setPerguntas] = useState([...PerguntasBase]);
     const [abertas, setAbertas] = useState([]);
     const [respostasVisiveis, setRespostasVisiveis] = useState([]);
     const [naoLembrei, setNaoLembrei] = useState([]);
@@ -32,9 +34,19 @@ export default function Questoes() {
 
     const concluido = naoLembrei.length + quaseLembrei.length + zapLembrei.length;
 
+    function adicionarNovaPergunta() {
+        const novaPergunta = prompt("Digite a pergunta:");
+        const novaResposta = prompt("Digite a resposta:");
+
+        if (novaPergunta && novaResposta) {
+            const nova = { pergunta: novaPergunta, resposta: novaResposta };
+            setPerguntas((prev) => [...prev, nova]); // atualiza o estado
+        }
+    }
+
     return (
         <>
-            {Perguntas.map((item, index) => (
+            {perguntas.map((item, index) => (
                 <PerguntaCard
                     key={index}
                     item={item}
@@ -45,17 +57,18 @@ export default function Questoes() {
                         naoLembrei.includes(index)
                             ? "nao"
                             : quaseLembrei.includes(index)
-                            ? "quase"
-                            : zapLembrei.includes(index)
-                            ? "zap"
-                            : ""
+                                ? "quase"
+                                : zapLembrei.includes(index)
+                                    ? "zap"
+                                    : ""
                     }
                     abrirCard={abrirCard}
                     abrirResposta={abrirResposta}
                     onResponder={resposta}
                 />
             ))}
-            <ContadorConcluidos atual={concluido} total={Perguntas.length} />
+            <BotaoAdicionar prop={adicionarNovaPergunta}></BotaoAdicionar>
+            <ContadorConcluidos atual={concluido} total={perguntas.length} />
         </>
     );
 }
