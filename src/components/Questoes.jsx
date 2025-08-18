@@ -1,16 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Perguntas as PerguntasBase } from "./Dados";
 import PerguntaCard from "./Perguntas.jsx";
 import ContadorConcluidos from "./Rodape.jsx";
-import BotaoAdicionar  from "./Adicionar.jsx";
+import BotaoAdicionar from "./Adicionar.jsx";
+import { ButtonContainerReset, Add } from "../style/style.js";
 
 export default function Questoes() {
-    const [perguntas, setPerguntas] = useState([...PerguntasBase]);
+    const [perguntas, setPerguntas] = useState(() => {
+        const salvas = localStorage.getItem("perguntas");
+        return salvas ? JSON.parse(salvas) : [...PerguntasBase];
+    });
+
     const [abertas, setAbertas] = useState([]);
     const [respostasVisiveis, setRespostasVisiveis] = useState([]);
     const [naoLembrei, setNaoLembrei] = useState([]);
     const [quaseLembrei, setQuaseLembrei] = useState([]);
     const [zapLembrei, setZapLembrei] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem("perguntas", JSON.stringify(perguntas));
+    }, [perguntas]);
+
+    function deletarPergunta(index) {
+        setPerguntas(prev => prev.filter((_, i) => i !== index));
+    }
+
+    function adicionarNovaPergunta() {
+        const novaPergunta = prompt("Digite a pergunta:");
+        const novaResposta = prompt("Digite a resposta:");
+
+        if (novaPergunta && novaResposta) {
+            const nova = { pergunta: novaPergunta, resposta: novaResposta };
+            setPerguntas(prev => [...prev, nova]);
+        }
+    }
 
     const abrirCard = (index) => {
         if (!abertas.includes(index)) setAbertas([...abertas, index]);
@@ -34,16 +57,6 @@ export default function Questoes() {
 
     const concluido = naoLembrei.length + quaseLembrei.length + zapLembrei.length;
 
-    function adicionarNovaPergunta() {
-        const novaPergunta = prompt("Digite a pergunta:");
-        const novaResposta = prompt("Digite a resposta:");
-
-        if (novaPergunta && novaResposta) {
-            const nova = { pergunta: novaPergunta, resposta: novaResposta };
-            setPerguntas((prev) => [...prev, nova]); // atualiza o estado
-        }
-    }
-
     return (
         <>
             {perguntas.map((item, index) => (
@@ -51,6 +64,7 @@ export default function Questoes() {
                     key={index}
                     item={item}
                     index={index}
+                    deletarPergunta={deletarPergunta}
                     aberta={abertas.includes(index)}
                     respostaVisivel={respostasVisiveis.includes(index)}
                     status={
@@ -67,7 +81,10 @@ export default function Questoes() {
                     onResponder={resposta}
                 />
             ))}
-            <BotaoAdicionar prop={adicionarNovaPergunta}></BotaoAdicionar>
+            <BotaoAdicionar prop={adicionarNovaPergunta} />
+            <ButtonContainerReset >
+                <Add onClick={() => setPerguntas(PerguntasBase)} >Reiniciar</Add>
+            </ButtonContainerReset>
             <ContadorConcluidos atual={concluido} total={perguntas.length} />
         </>
     );

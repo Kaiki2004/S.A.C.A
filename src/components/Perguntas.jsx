@@ -3,11 +3,14 @@ import virar from "../assets/seta_virar.png";
 import errou from "../assets/icone_erro.png";
 import acertou from "../assets/icone_certo.png";
 import quase from "../assets/icone_quase.png";
-import { Container, Q, CardPergunta, PerguntaConteiner } from "../style/style.js";
+import Lixo from "../assets/lixo.png";
+import { Container, Q, CardPergunta, PerguntaConteiner,Icons } from "../style/style.js";
 import Adicionar from "./Adicionar.jsx";
 import BotoesResposta from "./BotoesResposta";
 import Lampada from "../assets/Lampada.png"
 import Tirarduvidas from "./Tirarduvidas.jsx"
+
+
 
 export default function PerguntaCard({
     item,
@@ -17,7 +20,9 @@ export default function PerguntaCard({
     status,
     abrirCard,
     abrirResposta,
-    onResponder
+    onResponder,
+    deletarPergunta
+    
 }) {
     const imagem =
         status === "nao" ? errou :
@@ -44,9 +49,11 @@ export default function PerguntaCard({
                     {!respostaVisivel ? (
                         <>
                             <p>{item.pergunta}</p>
-                            <div>
+
+                            <Icons>
+                                <img src={Lixo} alt="Deletar" onClick={() => deletarPergunta(index)} />
                                 <img onClick={() => abrirResposta(index)} src={virar} alt="virar" />
-                            </div>
+                            </Icons>
                         </>
                     ) : (
                         <>
@@ -69,3 +76,5 @@ export default function PerguntaCard({
         </Container>
     );
 }
+
+

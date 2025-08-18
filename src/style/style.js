@@ -115,6 +115,23 @@ export const ButtonContainer = styled.span`
     align-items: center;
     gap: 10px;
 
+
+
+    @media (min-width: 600px) {
+        gap: 50px;
+    }
+`;
+
+export const ButtonContainerReset = styled.span`
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 90px;
+
+
+
     @media (min-width: 600px) {
         gap: 50px;
     }
@@ -164,14 +181,18 @@ export const Num_questoes = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    border-radius: 5px;
+    position: fixed;         
+    bottom: 0;               
+    left: 0;                 
+    z-index: 10;  
+    border-top: 1px solid #ccc;
     padding: 0 20px;
 
     @media (min-width: 600px) {
         font-size: 24px;
     }
 `;
+
 
 
 export const PerguntaConteiner = styled.span`
@@ -185,4 +206,11 @@ export const PerguntaConteiner = styled.span`
         
     }
     
+`;
+
+export const Icons = styled.div`
+    diplay: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 410px;
 `;
