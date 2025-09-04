@@ -7,7 +7,6 @@ import Lixo from "../assets/lixo.png";
 import { Container, Q, CardPergunta, PerguntaConteiner,Icons } from "../style/style.js";
 import Adicionar from "./Adicionar.jsx";
 import BotoesResposta from "./BotoesResposta";
-import Lampada from "../assets/Lampada.png"
 import Tirarduvidas from "./Tirarduvidas.jsx"
 
 
