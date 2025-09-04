@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Lampada from "../assets/Lampada.png";
+import Lampada from "../assets/lampada.png";
 import styled from "styled-components";
 import showdown from "showdown";
 import Xis from "../assets/excluir.png";
